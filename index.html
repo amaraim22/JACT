@@ -1,0 +1,184 @@
+ <html>
+	
+	<head>
+	
+		<title>JACT</title>
+		
+		<script src="jquery.min.js" type="text/javascript"></script>
+		
+		<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+		<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+		
+		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+		
+		<style>
+		
+			.jumbotron {
+			
+				position:relative;
+				overflow:hidden;
+				text-align:center;
+				margin-top:50px;
+
+			}
+
+			.jumbotron .container {
+			
+				position:relative;
+				z-index:2;
+  
+				background:rgba(0,0,0,0.2);
+				padding:2rem;
+				border:1px solid rgba(0,0,0,0.1);
+				border-radius:3px;
+				
+			}
+
+			.jumbotron-background {
+			
+				object-fit:cover;
+				font-family: 'object-fit: cover;';
+				position:absolute;
+				top:0;
+				z-index:1;
+				width:100%;
+				height:100%;
+				opacity:0.5;
+  
+			}
+
+			img.blur {
+
+				-webkit-filter: blur(4px);
+				filter: blur(4px);
+				filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
+
+			}
+
+			#email {
+
+				width:300px;
+
+			}
+
+			.card-img-top {
+			
+				width:100%;
+			
+			}
+			
+			.appSummary {
+			
+				text-align:center;
+				margin-top:50px;
+				margin-bottom:50px;
+			
+			}
+			
+			.home {
+			
+				margin:0 auto;
+			
+			}
+			
+			.download {
+			
+				text-align:center;
+			
+			}
+			
+			#appstoreIcon {
+			
+				width:200px;
+			
+			}
+			
+			#footer {
+			
+				background-color:#cbe8ba;
+				padding-top:150px;
+				margin-top:50px;
+				padding-bottom:150px;
+			
+			}
+			
+			body {
+			
+				position:relative;
+			
+			}
+		
+		</style>
+		
+		
+	</head>
+	
+	<body data-spy="scroll" data-target="#navbar" data-offset="150">
+	
+		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
+			<a class="navbar-brand" href="index.html">JACT</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="about.html">About Us</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="portfolio.html">Portfolio</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="sign-up.html">Sign Up for Newsletter</a>
+					</li>
+				</ul>
+
+			</div>
+		</nav>
+
+		<div class="jumbotron jumbotron-fluid bg-dark" id="jumbotron">
+  
+			<div class="jumbotron-background">
+				<img src="hazy3.jpg" class="blur ">
+			</div>
+
+			<div class="container text-white ">
+
+				<h1 class="display-4">Welcome to JACT</h1>
+				<p class="lead">A Description</p>
+
+			</div>
+		</div>
+
+		<div class="container">
+		
+			<div class="appSummary">
+			
+				<h1>Preview</h1>
+			
+			</div>
+		
+		</div>
+		
+		
+		<div id="footer">
+			<div class="download">
+
+				<h2>Contact Us!</h2>
+				
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+		
+			$(function () { objectFitImages() });
+		
+		</script>
+		
+	</body>
+	
+</html>
