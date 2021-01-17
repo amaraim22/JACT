@@ -12,7 +12,21 @@
 		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 		
 		<style>
-		
+			.grid-container {
+				display: grid;
+				grid-template-columns: auto auto auto auto;
+				grid-gap: 10px;
+				background-color: #2196F3;
+				padding: 10px;
+				}
+
+			.grid-container > div {
+			background-color: rgba(255, 255, 255, 0.8);
+			border: 1px solid black;
+			text-align: center;
+			font-size: 30px;
+			}
+
 			.jumbotron {
 			
 				position:relative;
@@ -143,6 +157,17 @@
 			<div class="appSummary">
 			
 				<h1>Preview</h1>
+				<div class="grid-container">
+					<button><div>+</div></button>
+					<button><div>2</div></button>
+					<button><div>3</div></button>
+					<button><div>4</div></button>
+					<button><div>5</div></button>
+					<button><div>6</div></button>
+					<button><div>7</div></button>
+					<button><div>8</div></button>
+					
+				  </div>
 			
 			</div>
 		
