@@ -13,6 +13,10 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+from flask import Flask, render_template, request, redirect, url_for
+import csv
+
+app = Flask(__name__)
 
 @app.route('/')
 def return_home():
@@ -56,3 +60,7 @@ def upload_file():
 
 if __name__ == '__main__':
    app.run(debug = True)
+    
+@app.route('/portfolio')
+def return_portfolio():
+    return render_template("portfolio.html")
