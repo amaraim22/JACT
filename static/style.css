@@ -32,6 +32,14 @@
 
 }
 
+img.blur {
+
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
+
+}
+
 .appSummary {
 
   text-align:center;
@@ -66,5 +74,11 @@ margin-bottom:50px;
 body {
 
   position:relative;
+
+}
+
+#delete-btn {
+
+  background-color: red !important; 
 
 }

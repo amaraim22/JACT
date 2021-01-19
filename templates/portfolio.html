@@ -84,17 +84,19 @@
 		<h1>{{ status }}</h1>
 		{% endif %}
 
-
+		{% for user in users %}
 		<div class="card" style="width: 18rem;">
 			<img src="..." class="card-img-top" alt="...">
 			<div class="card-body">
-				{% for user in users %}
+
 				<h5 class="card-title">{{ user.fname }} {{ user.lname }}</h5>
 				<p class="card-text">{{ user.bio }}</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-				{% endfor %}
+				<a href="/open" class="btn btn-primary" name="open" value="{{ user.fname }}">Open</a>
+				<a href="/delete" class="btn btn-primary" id="delete-btn" name="delete" value="{{ user.fname }}">Delete</a>
+				
 			</div>
-		  </div>
+		</div>
+		{% endfor %}
 		
 	</body>
 	

@@ -26,7 +26,7 @@ def return_users():
                 })
             else:
                 first_line = False
-    return render_template("portfolio.html", users=users)
+        return render_template("portfolio.html", users=users)    
 
 @app.route('/newUser', methods=["GET", "POST"])
 def submit_form():
@@ -42,5 +42,9 @@ def submit_form():
         else:
             with open('data/users.csv', mode='a', newline='') as file:
                 data = csv.writer(file)
-                data.writerow([fname, lname, bio])           
-            return render_template("portfolio.html")
+                data.writerow([fname, lname, bio])   
+            return render_template("portfolio.html")   
+
+@app.route('/newUser', methods=["GET", "POST"]) 
+def delete_port():    
+            
