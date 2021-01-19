@@ -44,7 +44,3 @@ def submit_form():
                 data = csv.writer(file)
                 data.writerow([fname, lname, bio])   
             return render_template("portfolio.html")   
-
-@app.route('/newUser', methods=["GET", "POST"]) 
-def delete_port():    
-            
