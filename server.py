@@ -32,21 +32,17 @@ def return_index():
 
 @app.route('/portfolio')
 def return_portfolio():
-    with open('data/users.csv') as file:
-        data = csv.reader(file, delimiter=',')
-        first_line = True
+    with open('data/users.csv', mode='r') as file:
+        data = csv.DictReader(file, delimiter=',')
         users = []
         for row in data:
-            if not first_line:
-                users.append({
-                "fname": row[0],
-                "lname": row[1],
-                "bio": row[2]
+            users.append({
+                "fname": row["firstName"],
+                "lname": row["lastName"],
+                "bio": row["bio"]
                 })
-            else:
-                first_line = False
-        return render_template("portfolio.html", users=users) 
-      
+    return render_template("portfolio.html", users=users) 
+
 @app.route('/newUser', methods=["GET", "POST"])
 def submit_form():
     if request.method == "GET":
@@ -56,13 +52,106 @@ def submit_form():
         fname = userdata["fname"]
         lname = userdata["lname"]
         bio = userdata["bio"]
+        lines = list()
+        isTaken = False
+
+        with open('data/users.csv', mode='r') as readFile:
+            reader = csv.DictReader(readFile, delimiter=',')
+            for row in reader:
+                lines.append(row)
+                for r in range(len(lines)):
+                    if fname == lines[r]["firstName"] and lname == lines[r]["lastName"]:
+                        isTaken = True
+
         if( len(fname) < 1 or len(lname) < 1 or len(bio) < 1 ):
-            return render_template("portfolio.html", status='Please resubmit with valid information.')
+            with open('data/users.csv', mode='r') as file:
+                data = csv.DictReader(file, delimiter=',')
+                users = []
+                for row in data:
+                    users.append({
+                        "fname": row["firstName"],
+                        "lname": row["lastName"],
+                        "bio": row["bio"]
+                        })
+            return render_template("portfolio.html", users=users, status='Please resubmit with valid information.')  
+
+        elif( isTaken == True ):
+            with open('data/users.csv', mode='r') as file:
+                data = csv.DictReader(file, delimiter=',')
+                users = []
+                for row in data:
+                    users.append({
+                        "fname": row["firstName"],
+                        "lname": row["lastName"],
+                        "bio": row["bio"]
+                        })
+            return render_template("portfolio.html", users=users, info='This name is already taken.')    
+
         else:
             with open('data/users.csv', mode='a', newline='') as file:
                 data = csv.writer(file)
-                data.writerow([fname, lname, bio])   
-            return render_template("portfolio.html") 
+                data.writerow([fname, lname, bio]) 
+            with open('data/users.csv', mode='r') as file:
+                data = csv.DictReader(file, delimiter=',')
+                users = []
+                for row in data:
+                    users.append({
+                        "fname": row["firstName"],
+                        "lname": row["lastName"],
+                        "bio": row["bio"]
+                        })
+            return render_template("portfolio.html", users=users) 
+
+@app.route('/delete', methods=["GET", "POST"])
+def delete_form():
+    if request.method == "GET":
+        return render_template("portfolio.html") 
+    elif request.method == "POST":
+        userdata = dict(request.form)
+        fname = userdata["delete-btn"]    
+        lines = list()
+        with open('data/users.csv', mode='r') as readFile:
+            reader = csv.DictReader(readFile, delimiter=',')
+            for row in reader:
+                lines.append(row)
+                for r in range(len(lines)):
+                    if fname == lines[r]["firstName"]:
+                        lines.remove(row)
+        with open('data/users.csv', mode='w') as writeFile:
+            writer = csv.writer(writeFile)  
+            writer.writerow(["firstName", "lastName", "bio"])  
+            for r in range(len(lines)):
+                firstName = lines[r]["firstName"]
+                lastName = lines[r]["lastName"]
+                bio = lines[r]["bio"]   
+                writer.writerow([firstName, lastName, bio])
+        with open('data/users.csv', mode='r') as file:
+            data = csv.DictReader(file, delimiter=',')
+            users = []
+            for row in data:
+                users.append({
+                    "fname": row["firstName"],
+                    "lname": row["lastName"],
+                    "bio": row["bio"]
+                    })
+        return render_template("portfolio.html", users=users)
+
+@app.route('/open', methods=["GET", "POST"])
+def open_form():
+    if request.method == "GET":
+        return render_template("portfolio.html") 
+    elif request.method == "POST":
+        userdata = dict(request.form)
+        fname = userdata["open-btn"]    
+        lines = list()
+        with open('data/users.csv', mode='r') as readFile:
+            reader = csv.DictReader(readFile, delimiter=',')
+            for row in reader:
+                lines.append(row)
+                for r in range(len(lines)):
+                    if fname != lines[r]["firstName"]:
+                        lines.remove(row)
+            return render_template("user-page.html", thisUser=lines)
 
 @app.route('/upload')
 def upload_form():
