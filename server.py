@@ -79,8 +79,8 @@ def new_form():
         return redirect(url_for('newUser'))
     elif request.method == "POST":
         userdata = dict(request.form)
-        fname = userdata["fname"].lower()
-        lname = userdata["lname"].lower()
+        fname = userdata["fname"]
+        lname = userdata["lname"]
         bio = userdata["bio"]
         lines = list()
         isTaken = False
@@ -114,7 +114,7 @@ def new_form():
                 else:
                     filename = secure_filename(image.filename)
                     ext = filename.rsplit(".", 1)[1]
-                    new_filename = fname.lower() + "-" + lname.lower() + "." + ext
+                    new_filename = fname + "-" + lname + "." + ext
                     image.save(os.path.join(app.config["IMAGE_UPLOADS"], new_filename))
 
                 with open('data/users.csv', mode='a', newline='') as file:
@@ -166,14 +166,16 @@ def open_form():
         return render_template("portfolio.html") 
     elif request.method == "POST":
         userdata = dict(request.form)
-        fname = userdata["open-btn"]    
+        fullname = userdata["open-btn"]    
+        fname = fullname.rsplit("-", 1)[0]
+        lname = fullname.rsplit("-", 1)[1]   
         lines = list()
         with open('data/users.csv', mode='r') as readFile:
             reader = csv.DictReader(readFile, delimiter=',')
             for row in reader:
                 lines.append(row)
                 for r in range(len(lines)):
-                    if fname != lines[r]["firstName"]:
+                    if fname != lines[r]["firstName"] and lname != lines[r]["lastName"]:
                         lines.remove(row)
             return render_template("user-page.html", thisUser=lines)
 

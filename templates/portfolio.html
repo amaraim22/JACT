@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <title>JACT</title>
         
-        <link rel="stylesheet" type="text/css" href="static/style.css">
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -18,6 +18,13 @@
 
 				position: relative;
 				margin-bottom: 100px;
+
+			}
+
+			#delete-btn {
+
+				background-color:gray !important; 
+				border-color: gray !important; 
 
 			}
 
@@ -115,24 +122,28 @@
 			</div>
 		</div>
 
-		{% for users in users %}
-		<div class="card" style="width: 18rem;">
-			<img src="/static/images/{{ users.imgFile }}" class="card-img-top">
-			<div class="card-body">
+		<div class="container">
+			<div class="card-deck" id="about">
+				{% for users in users %}
+				<div class="card" style="width: 18rem;">
+					<img src="/static/images/{{ users.imgFile }}" class="card-img-top">
+					<div class="card-body">
 
-				<h5 class="card-title">{{ users.fname }} {{ users.lname }}</h5>
-				<p class="card-text">{{ users.bio }}</p>				
-					
-				<form method='POST' action='open'>
-					<button type="submit" class="btn btn-primary" id="open-btn" name="open-btn" value="{{ users.fname }}">Open</button>
-				</form>
-				<form method='POST' action='delete'>
-					<button type="submit" class="btn btn-primary" id="delete-btn" name="delete-btn" value="{{ users.fname }}-{{ users.lname }}">Delete</button>
-				</form>
-				
+						<h5 class="card-title">{{ users.fname }} {{ users.lname }}</h5>
+						<p class="card-text">{{ users.bio }}</p>				
+							
+						<form method='POST' action='open'>
+							<button type="submit" class="btn btn-primary" id="open-btn" name="open-btn" value="{{ users.fname }}-{{ users.lname }}">Open</button>
+						</form>
+						<form method='POST' action='delete'>
+							<button type="submit" class="btn btn-primary" id="delete-btn" name="delete-btn" value="{{ users.fname }}-{{ users.lname }}">Delete</button>
+						</form>
+						
+					</div>
+				</div>
+				{% endfor %}
 			</div>
 		</div>
-		{% endfor %}
 		
 	</body>
 	
