@@ -60,6 +60,12 @@
 			{{ info }}
 		</div>
 		{% endif %}
+
+		{% if image_status %}
+		<div class="alert alert-primary" role="alert">
+			{{ image_status }}
+		</div>
+		{% endif %}
 		
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Create New</button>
 
@@ -75,7 +81,7 @@
 					
 					<div class="modal-body">
 						{% block form %}
-						<form method="post" action="/newUser">
+						<form method="post" action="/newUser" enctype="multipart/form-data">
 							<div class="form-row">
 								<div class="form-group col-md-6">
 								  <label for="inputFirstName">First Name</label>
@@ -90,13 +96,19 @@
 								<label for="bio-text" class="col-form-label">Bio:</label>
 								<textarea class="form-control" id="bio-text" name="bio"></textarea>
 							</div>
+							<div class="form-group">
+								<div class="custom-file">
+									<input type="file" class="custom-file-input" name="image" id="image">
+									<label class="custom-file-label" for="image">Select image...</label>
+								</div>
+							</div>
 							<button type="submit" class="btn btn-primary" id="create-new">Create New</button>
 						</form>
 						{% endblock %}
 					</div>
+					
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>						
 					</div>
 					
 				</div>
@@ -105,7 +117,7 @@
 
 		{% for users in users %}
 		<div class="card" style="width: 18rem;">
-			<img src="..." class="card-img-top" alt="...">
+			<img src="/static/images/{{ users.imgFile }}" class="card-img-top">
 			<div class="card-body">
 
 				<h5 class="card-title">{{ users.fname }} {{ users.lname }}</h5>
@@ -115,7 +127,7 @@
 					<button type="submit" class="btn btn-primary" id="open-btn" name="open-btn" value="{{ users.fname }}">Open</button>
 				</form>
 				<form method='POST' action='delete'>
-					<button type="submit" class="btn btn-primary" id="delete-btn" name="delete-btn" value="{{ users.fname }}">Delete</button>
+					<button type="submit" class="btn btn-primary" id="delete-btn" name="delete-btn" value="{{ users.fname }}-{{ users.lname }}">Delete</button>
 				</form>
 				
 			</div>

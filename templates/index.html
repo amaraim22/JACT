@@ -55,58 +55,6 @@
 		
 			<div class="appSummary">
 			
-				<h1>Portfolios for yall</h1>
-				<div class="grid-container" style="height: 500px;">
-					<button class="open-button" onclick="openForm()"><div>+</div></button>
-					<button><div>2</div></button>
-					<button><div>3</div></button>
-					<button><div>4</div></button>
-					<button><div>5</div></button>
-					<button><div>6</div></button>
-					<button><div>7</div></button>
-					<button><div>8</div></button>
-
-				  </div>
-		
-				<div class="form-popup" id="myForm">
-					<form action="/action_page.php" class="form-container">
-						<h1>Upload Your Portfolio!</h1>
-					
-						<label for="fname"><b>First Name</b></label>
-						<input type="text" placeholder="Enter first name" name="fname" required>
-					
-						<label for="lname"><b>Last Name</b></label>
-						<input type="text" placeholder="Enter last name" name="lname" required>
-
-						<label for="bio"><b>Bio</b></label>
-						<input type="text" placeholder="Enter last name" name="lname" required>
-						<br>
-						<label for="file"><b>File</b></label>
-						<!-- <p>
-							{% with messages = get_flashed_messages() %}
-							  {% if messages %}
-								<ul class=flashes>
-								{% for message in messages %}
-								  <li>{{ message }}</li>
-								{% endfor %}
-								</ul>
-							  {% endif %}
-							{% endwith %}
-						</p> -->
-						<form method="post" action="/" enctype="multipart/form-data">
-							<dl>
-								<p>
-									<input type="file" name="file" autocomplete="off" required>
-								</p>
-							</dl>
-							<p>
-								<input type="submit" value="Submit">
-							</p>
-						</form>					
-						<!-- <button type="submit" class="btn">Submit</button> -->
-						<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-					</form>
-					</div>
 				<h1>Preview</h1>
 			
 			</div>
@@ -121,29 +69,6 @@
 				
 			</div>
 		</div>
-
-        <div id="user_list">
-        {% for user in users %}
-            <h2>
-              {{ user.fname }}{{ user.lname }}
-            </h2>
-            <p>
-              <b>City</b>: {{ user.city }}
-            </p>
-        {% endfor %}
-        </div>
-
-        <script type="text/javascript">
-			$(function () { objectFitImages() });
-
-			function openForm() {
-				document.getElementById("myForm").style.display = "block";
-			}
-			
-			function closeForm() {
-				document.getElementById("myForm").style.display = "none";
-			}
-		</script>
         
     </body>
 </html>
