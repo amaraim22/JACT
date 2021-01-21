@@ -17,7 +17,6 @@
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
 		<style>
-
 			.card {
 			box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 			transition: 0.3s;
@@ -31,15 +30,15 @@
 			.container-about {
 				float: right;
 			}
-
 		</style>
 	
 	</head>
 	
 	<body data-spy="scroll" data-target="#navbar" data-offset="150">
 
+		<h1> About Us </h1>
+
 		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
-			
 			<a class="navbar-brand" href="/">JACT</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			  <span class="navbar-toggler-icon"></span>
@@ -58,14 +57,14 @@
 				</li>
 			  </ul>    
 			</div>
-			
-		</nav>
+
+		</nav>   
 
 		<section class="about-second">
 
 			<div class="card" style="margin-top: 100px;">
 				<p>
-					<img src="images/moana.jpg" alt="Jane" style="width:200px;">
+					<img src="/static/images/moana.jpg" alt="Jane" style="width:200px;">
 					<h2>Chantel Ngoh</h2>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 					Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, 
@@ -78,26 +77,26 @@
 			</div>
 
 			<div class="card" style="float: right; margin-top: 50px;" data-aos="fade-left">
-				<img src="images/moana.jpg" alt="Mike" style="width:200px;float: right;">
-				<div class="container-about">
-					<h2>Mike Ross</h2>
-					<p class="title">Art Director</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac...</p>
-				</div>
+				<img src="/static/images/moana.jpg" alt="Mike" style="width:200px;float: right;">
+					<div class="container-about">
+						<h2>Mike Ross</h2>
+						<p class="title">Art Director</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac...</p>
+					</div>
 			</div>
 		
 			<div class="card" style="float: left;margin-top: 50px; margin-bottom: 100px;" data-aos="fade-right">
-				<img src="images/moana.jpg" alt="John" style="width:200px">
+				<img src="/static/images/moana.jpg" alt="John" style="width:200px">
 				<div class="container-about">
 					<h2>John Doe</h2>
 					<p class="title">Designer</p>
 					<p class="about-email">johndoe@italianconsegna.com</p>
 				</div>
-			</div>
 	
 		</section>
-
-		<script src="https://unpkg.com/aos@next/dist/aos.js">
+	
+		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+		<script>
 			AOS.init({
 				duration: 1000,
 				offset: 400,
@@ -118,7 +117,7 @@
 				setTimeout(carousel, 2000); // Change image every 2 seconds
 			}
 		</script>
-	
+
 	</body>
 	
 </html>

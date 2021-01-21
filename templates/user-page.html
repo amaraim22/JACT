@@ -50,13 +50,12 @@
         </nav>   		
 
         {% for user in thisUser %}
-                <h2>
-                  {{ user.firstName }} {{ user.lastName }}
-                </h2>
-                <p>
-                  <b>Bio</b>: {{ user.bio }}
-                </p>
-        {% endfor %}
+            <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+            <p><b>Bio</b>: {{ user.bio }}</p>
+			<img src="/static/images/{{ user.imgFile }}" class="card-img-top">
+		{% endfor %}
+		
+		
 		
 	</body>
 	

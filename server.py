@@ -1,19 +1,7 @@
 import os
-#import magic
 import urllib.request
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
-import csv
-
-app = Flask(__name__)
-UPLOAD_FOLDER = "/Users/chantelngoh/Desktop/SBU/Github/JACT/templates/upload.html"
-app.secret_key = "secret key"
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-def allowed_file(filename):
-	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-from flask import Flask, render_template, request, redirect, url_for
 import csv
 
 app = Flask(__name__)
@@ -30,30 +18,73 @@ def return_about():
 def return_index():
     return render_template("index.html")
 
-@app.route('/portfolio')
-def return_portfolio():
+def return_users():
     with open('data/users.csv', mode='r') as file:
         data = csv.DictReader(file, delimiter=',')
-        users = []
+        user = []      
         for row in data:
-            users.append({
+            user.append({
                 "fname": row["firstName"],
                 "lname": row["lastName"],
-                "bio": row["bio"]
+                "bio": row["bio"],
+                "imgFile": row["imgFile"]
                 })
+    return user
+
+@app.route('/portfolio')
+def return_form():
+    users = []
+    users = return_users()
     return render_template("portfolio.html", users=users) 
 
+app.config["IMAGE_UPLOADS"] = '/Users/keoam/Documents/Github/JACT/static/images'
+app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG", "JPG", "JPEG", "GIF"]
+
+def allowed_image(filename):
+    if not "." in filename:
+        return False
+    ext = filename.rsplit(".", 1)[1]
+    if ext.upper() in app.config["ALLOWED_IMAGE_EXTENSIONS"]:
+        return True
+    else:
+        return False
+
+@app.route("/upload-image", methods=["GET", "POST"])
+def upload_image():
+
+    if request.method == "POST":
+        if request.files:
+            image = request.files["image"]
+
+            if image.filename == "":
+                print("Image must have a filename")
+                return redirect(request.url)
+
+            if not allowed_image(image.filename):
+                print("That image extension is not allowed")
+                return redirect(request.url)
+
+            else:
+                filename = secure_filename(image.filename)
+                image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
+
+            print("Image saved")
+            return redirect(request.url)
+
+    return render_template("portfolio.html")
+
 @app.route('/newUser', methods=["GET", "POST"])
-def submit_form():
+def new_form():
     if request.method == "GET":
         return redirect(url_for('newUser'))
     elif request.method == "POST":
         userdata = dict(request.form)
-        fname = userdata["fname"]
-        lname = userdata["lname"]
+        fname = userdata["fname"].lower()
+        lname = userdata["lname"].lower()
         bio = userdata["bio"]
         lines = list()
         isTaken = False
+        users = []
 
         with open('data/users.csv', mode='r') as readFile:
             reader = csv.DictReader(readFile, delimiter=',')
@@ -64,43 +95,34 @@ def submit_form():
                         isTaken = True
 
         if( len(fname) < 1 or len(lname) < 1 or len(bio) < 1 ):
-            with open('data/users.csv', mode='r') as file:
-                data = csv.DictReader(file, delimiter=',')
-                users = []
-                for row in data:
-                    users.append({
-                        "fname": row["firstName"],
-                        "lname": row["lastName"],
-                        "bio": row["bio"]
-                        })
+            users = return_users()
             return render_template("portfolio.html", users=users, status='Please resubmit with valid information.')  
 
         elif( isTaken == True ):
-            with open('data/users.csv', mode='r') as file:
-                data = csv.DictReader(file, delimiter=',')
-                users = []
-                for row in data:
-                    users.append({
-                        "fname": row["firstName"],
-                        "lname": row["lastName"],
-                        "bio": row["bio"]
-                        })
-            return render_template("portfolio.html", users=users, info='This name is already taken.')    
+            users = return_users()
+            return render_template("portfolio.html", users=users, info='This name is already taken.')   
 
         else:
-            with open('data/users.csv', mode='a', newline='') as file:
-                data = csv.writer(file)
-                data.writerow([fname, lname, bio]) 
-            with open('data/users.csv', mode='r') as file:
-                data = csv.DictReader(file, delimiter=',')
+            if request.files:
+                image = request.files["image"]
+                if image.filename == "":
+                    users = return_users()
+                    return render_template("portfolio.html", users=users, image_status='Please submit an image.') 
+                if not allowed_image(image.filename):
+                    users = return_users()
+                    return render_template("portfolio.html", users=users, image_status='That image extension is not allowed.') 
+                else:
+                    filename = secure_filename(image.filename)
+                    ext = filename.rsplit(".", 1)[1]
+                    new_filename = fname.lower() + "-" + lname.lower() + "." + ext
+                    image.save(os.path.join(app.config["IMAGE_UPLOADS"], new_filename))
+
+                with open('data/users.csv', mode='a', newline='') as file:
+                    data = csv.writer(file)
+                    data.writerow([fname, lname, bio,new_filename]) 
                 users = []
-                for row in data:
-                    users.append({
-                        "fname": row["firstName"],
-                        "lname": row["lastName"],
-                        "bio": row["bio"]
-                        })
-            return render_template("portfolio.html", users=users) 
+                users = return_users()
+                return render_template("portfolio.html", users=users)       
 
 @app.route('/delete', methods=["GET", "POST"])
 def delete_form():
@@ -108,32 +130,34 @@ def delete_form():
         return render_template("portfolio.html") 
     elif request.method == "POST":
         userdata = dict(request.form)
-        fname = userdata["delete-btn"]    
+        fullname = userdata["delete-btn"]    
+        fname = fullname.rsplit("-", 1)[0]
+        lname = fullname.rsplit("-", 1)[1]
         lines = list()
         with open('data/users.csv', mode='r') as readFile:
             reader = csv.DictReader(readFile, delimiter=',')
             for row in reader:
                 lines.append(row)
                 for r in range(len(lines)):
-                    if fname == lines[r]["firstName"]:
+                    if fname == lines[r]["firstName"] and lname == lines[r]["lastName"]:
                         lines.remove(row)
+                        arrImages = os.listdir(app.config["IMAGE_UPLOADS"])
+                        for img in arrImages:
+                            filename = img.rsplit(".", 1)[0]
+                            if filename == fullname:
+                                os.remove(app.config["IMAGE_UPLOADS"] + '/' + img)
+
         with open('data/users.csv', mode='w') as writeFile:
             writer = csv.writer(writeFile)  
-            writer.writerow(["firstName", "lastName", "bio"])  
+            writer.writerow(["firstName", "lastName", "bio", "imgFile"])  
             for r in range(len(lines)):
                 firstName = lines[r]["firstName"]
                 lastName = lines[r]["lastName"]
                 bio = lines[r]["bio"]   
-                writer.writerow([firstName, lastName, bio])
-        with open('data/users.csv', mode='r') as file:
-            data = csv.DictReader(file, delimiter=',')
-            users = []
-            for row in data:
-                users.append({
-                    "fname": row["firstName"],
-                    "lname": row["lastName"],
-                    "bio": row["bio"]
-                    })
+                imgFile = lines[r]["imgFile"]  
+                writer.writerow([firstName, lastName, bio, imgFile])
+        users = []
+        users = return_users()      
         return render_template("portfolio.html", users=users)
 
 @app.route('/open', methods=["GET", "POST"])
@@ -152,30 +176,6 @@ def open_form():
                     if fname != lines[r]["firstName"]:
                         lines.remove(row)
             return render_template("user-page.html", thisUser=lines)
-
-@app.route('/upload')
-def upload_form():
-    return render_template('index.html')
-	
-@app.route('/uploader', methods = ['GET', 'POST'])
-def upload_file():
-	if request.method == 'POST':
-        # check if the post request has the file part
-		if 'file' not in request.files:
-			flash('No file part')
-			return redirect(request.url)
-		file = request.files['file']
-		if file.filename == '':
-			flash('No file selected for uploading')
-			return redirect(request.url)
-		if file and allowed_file(file.filename):
-			filename = secure_filename(file.filename)
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			flash('File successfully uploaded')
-			return redirect('/')
-		else:
-			flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif')
-			return redirect(request.url)
 
 if __name__ == '__main__':
    app.run(debug = True)
