@@ -116,7 +116,8 @@ body {
 
 #delete-btn {
 
-  background-color: red !important; 
+  background-color:gray !important; 
+  border-color: gray !important; 
 
 }
 
