@@ -1,9 +1,4 @@
-firstName,lastName,bio
-Jasmine,Chen,I am a Tufts student and I an Art Major :D
-Amara,Im,Cambodian at heart but American by card; I love reading :D
-Tracy,Su,I love everyone and everything :D
-Chantel,Ngoh,I am from Singapore and I love Hamilton :D
-Cole,Haan,My parents named me after a shoe brand
-Efren,Rodriguez,I am Meixcan
-Eason,Chan,I sing very well
-Jon,Bellion,"I am Amara's senior, I sing, and I attended Sachem High School (EAST)"
+firstName,lastName,bio,imgFile
+Sammi,Lin,I am a cutie,Sammi-Lin.jpg
+Cole,Haan,My parents named me after a shoe brand.,Cole-Haan.jpeg
+Kai Asher,Rodriguez,Just a rando,Kai Asher-Rodriguez.png

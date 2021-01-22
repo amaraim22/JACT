@@ -1,34 +1,143 @@
-<html>
-	<head>	
-		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-		<title>JACT</title>
-		<script src="jquery.min.js" type="text/javascript"></script>
-		<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+<html></html>
+	<head>
+        <meta charset="UTF-8">
+        <title>JACT</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+		<link rel="stylesheet" href="static/footer-distributed-with-address-and-phones.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-		<link rel="stylesheet" type="text/css" href="static/style.css">
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-		<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 		
-
 		<style>
+			.footer {
+				font-family: 'raleway';
+				width: 100%;
+				margin-left: 8px;
+				margin-top: -16px;
+			}
+
+			.clearfix::after,
+			footer::after {
+				content: '';
+				display: block;
+				clear: both;    
+			}
+
+			[class^=col- ] {
+				float: left;
+			}
+
 			body {
 				position:relative;
 				margin: 0;
 				font-family: 'Raleway', sans-serif;
 			}
+
+			#navbar {
+				position: relative;
+				margin-bottom: 31px;
+			}
+
+			#delete-btn, #delete-btn:hover, #delete-btn:active, #delete-btn:visited, #delete-btn:focus, #delete-btn:active:focus {
+				background-color:gray !important; 
+				border-color: gray !important; 
+				cursor: pointer;
+			}
+
+			#open-btn, #open-btn:hover, #open-btn:active, #open-btn:visited, #open-btn:focus, #open-btn:active:focus {
+				background-color:#e4a199 !important; 
+				border-color: #e4a199 !important;
+				cursor: pointer;
+			}
+
+			.col {
+				position: relative;
+				margin-bottom: 20px;
+				margin-top: 20px;
+				display: flex;
+				flex-wrap: wrap; 
+				justify-content: center;
+				
+			}
+
+			.btn:hover {
+				opacity: 0.7;
+			}
+
+			.btn btn-primary {
+				opacity: 1;
+				transition: .5s ease;
+  				backface-visibility: hidden;
+			}
+
+			.container {
+				position: relative;
+				/* background-color: lightslategrey; */
+			}
+
+			#open-form {
+				float: left;
+				clear: right;				
+				margin-right: 20px;
+			}
+
+			#delete-form {
+				float: left;
+			}
+
+			#create-new {
+				/* margin-left: 150px; */
+				margin-top: 20px;
+				margin-bottom: 50px;
+			}
+
+			.alert {
+				margin-left: 150px;
+				margin-right: 150px;
+			}
+
+			h1 {
+				color: #474544;
+				font-size: 32px;
+				font-weight: 700;
+				letter-spacing: 7px;
+				text-transform: uppercase;
+			}
+
+			#create-btn {
+				background: none;
+				border: solid 2px #474544;
+				color: #474544;
+				cursor: pointer;
+				/* font-family: 'Helvetica', Arial, sans-serif; */
+				font-size: 0.8em;
+				font-weight: bold;
+				padding: 10px 20px;
+				text-transform: uppercase;
+				-webkit-transition: all 0.3s;
+				-moz-transition: all 0.3s;
+				-ms-transition: all 0.3s;
+				-o-transition: all 0.3s;
+				transition: all 0.1s;
+			}
+			
+			#create-btn:hover {
+				background: #474544;
+				color: #F2F3EB;
+			}
 		</style>
 	</head>
 	
 	<body data-spy="scroll" data-target="#navbar" data-offset="150">
+
 		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<a href="/"><img class="logo-img" src="static/logo.png" atl="logo" class="logo"></a>
+			<a href="/"><img class="logo-img" src="static/images/logo.png" atl="logo" class="logo"></a>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
@@ -44,9 +153,30 @@
 				</ul>
 			</div>
 		</nav>
+
+		<h1 style="text-align: center;">Portfolios</h1>
+		<hr style="height:3px;width:100px;border:none;color:#474544;background-color:#474544;"/>
+
+		{% if status %}
+  		<div class="alert alert-danger" role="alert">
+			{{ status }}
+		</div>
+		{% endif %}
+
+		{% if info %}
+		<div class="alert alert-info" role="alert">
+			{{ info }}
+		</div>
+		{% endif %}
+
+		{% if image_status %}
+		<div class="alert alert-primary" role="alert">
+			{{ image_status }}
+		</div>
+		{% endif %}
 		
-		<br><br><h1 style="text-align: center;margin-top: 75px;">Portfolios</h1>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left:45.5%;">Create New</button>
+		<button type="button" class="btn btn-primary" style="margin-left: 45%" id = "create-btn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Create New</button>
+		
 		<br><br>
 
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -61,7 +191,7 @@
 					
 					<div class="modal-body">
 						{% block form %}
-						<form method="post" action="/newUser">
+						<form method="post" action="/newUser" enctype="multipart/form-data">
 							<div class="form-row">
 								<div class="form-group col-md-6">
 								  <label for="inputFirstName">First Name</label>
@@ -76,35 +206,108 @@
 								<label for="bio-text" class="col-form-label">Bio:</label>
 								<textarea class="form-control" id="bio-text" name="bio"></textarea>
 							</div>
-							<button type="submit" class="btn btn-primary">Create New</button>
+							<div class="form-group">
+								<div class="custom-file">
+									<input type="file" class="custom-file-input" name="image" id="image">
+									<label class="custom-file-label" for="image">Select image...</label>
+								</div>
+							</div>
+							<button type="submit" class="btn btn-primary" id="create-new">Create New</button>
 						</form>
 						{% endblock %}
 					</div>
+					
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>						
 					</div>
 					
 				</div>
 			</div>
 		</div>
 
-		{% if status %}
-		<h1>{{ status }}</h1>
-		{% endif %}
+		<div class="container">
+			<div class="row row-cols-1 row-cols-md-4 g-4">
+				{% for users in users %}
+				<div class="col">
+					<div class="card h-100" style="width: 15rem;">
+						<img src="/static/images/{{ users.imgFile }}" class="card-img-top">
+						
+						<div class="card-body">
+							<h5 class="card-title">{{ users.fname }} {{ users.lname }}</h5>
+							<p class="card-text">{{ users.bio }}</p>				
+						</div>
 
-		<div class="flex-container">
-			{% for user in users %}
-				<div>
-					<img src="static/moana.jpg" class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">{{ user.fname }} {{ user.lname }}</h5>
-						<p class="card-text">{{ user.bio }}</p>
-						<a href="/open" class="btn btn-primary" id="open-btn" name="open" value="{{ user.fname }}">Open</a>
-						<a href="/delete" class="btn btn-primary" id="delete-btn" name="delete" value="{{ user.fname }}">Delete</a>
+						<div class="card-footer">
+							<form method='POST' action='open' id='open-form'>
+								<button type="submit" style="margin-left: 15.5px" class="btn btn-primary" id="open-btn" name="open-btn" value="{{ users.fname }}-{{ users.lname }}">Open</button>
+							</form>
+							<form method='POST' action='portfolio' id='delete-form'>
+								<button type="submit" class="btn btn-primary" id="delete-btn" name="delete-btn" value="{{ users.fname }}-{{ users.lname }}">Delete</button>
+							</form>
+						</div>
+					</div>	
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		
+		<div class="footer">
+			<footer class="footer-distributed">
+				<div class="footer-left">
+					<img src="static/images/logo.png" style="width: 170px;height:100px">
+					<p class="footer-links">
+						<a href="/">Home</a>
+						·
+						<a href="/about">about</a>
+						·
+						<a href="/portfolio">Portfolio</a>
+						·
+						<a href="#">FAQ</a>
+						.
+						<a href="#">Contact</a>
+					</p>
+					<p class="footer-company-name">JACT &copy; 2021</p>
+				</div>
+	
+				<div class="footer-center">
+					<div>
+						<i class="fa fa-map-marker"></i>
+						<p>
+							<span>100 Nicolls Rd, Stony Brook, NY 11794</span>United States</p>
+					</div>
+					<div>
+						<i class="fa fa-phone"></i>
+						<p>+1 (571) 252 9191</p>
+					</div>
+					<div>
+						<i class="fa fa-envelope"></i>
+						<p>
+							<a href="mailto:support@company.com">info@jact.com</a>
+						</p>
 					</div>
 				</div>
-			{% endfor %}
+	
+				<div class="footer-right">
+					<p class="footer-company-about">
+						<span>About JACT</span>
+						Connecting you to employers around the world.
+					</p>
+					<div class="footer-icons">
+						<a href="#">
+							<i class="fa fa-facebook"></i>
+						</a>
+						<a href="#">
+							<i class="fa fa-twitter"></i>
+						</a>
+						<a href="#">
+							<i class="fa fa-linkedin"></i>
+						</a>
+						<a href="#">
+							<i class="fa fa-github"></i>
+						</a>
+					</div>
+				</div>
+			</footer>
 		</div>
 
 	</body>
