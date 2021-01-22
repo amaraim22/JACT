@@ -30,6 +30,10 @@ def return_about():
 def return_index():
     return render_template("index.html")
 
+@app.route('/open/<uname>')
+def return_open(uname):
+    return "Hello" + uname
+
 @app.route('/portfolio')
 def return_portfolio():
     with open('data/users.csv') as file:
@@ -47,6 +51,15 @@ def return_portfolio():
                 first_line = False
         return render_template("portfolio.html", users=users) 
       
+# @app.route('/delete')
+# def delete_user():
+#     with open('data/users.csv') as file:
+#         data = csv.reader(file, delimiter=',')
+#         first_line = True
+#         users = []
+#         for row in data:
+#             if 
+
 @app.route('/newUser', methods=["GET", "POST"])
 def submit_form():
     if request.method == "GET":
