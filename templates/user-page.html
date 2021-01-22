@@ -21,6 +21,13 @@
 
 			}
 
+			#main-img {
+
+				float:left;
+				margin-left: 100px;
+
+			}
+
 		</style>
 		
 	</head>
@@ -52,7 +59,7 @@
         {% for user in thisUser %}
             <h2>{{ user.firstName }} {{ user.lastName }}</h2>
             <p><b>Bio</b>: {{ user.bio }}</p>
-			<img src="/static/images/{{ user.imgFile }}" class="card-img-top">
+			<img src="/static/images/{{ user.imgFile }}" class="img-fluid" id="main-img">
 		{% endfor %}
 		
 		

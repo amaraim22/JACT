@@ -17,14 +17,66 @@
 			#navbar {
 
 				position: relative;
-				margin-bottom: 100px;
+				margin-bottom: 31px;
 
 			}
 
-			#delete-btn {
+			#delete-btn, #delete-btn:hover, #delete-btn:active, #delete-btn:visited, #delete-btn:focus, #delete-btn:active:focus {
 
 				background-color:gray !important; 
 				border-color: gray !important; 
+
+			}
+
+			#open-btn, #open-btn:hover, #open-btn:active, #open-btn:visited, #open-btn:focus, #open-btn:active:focus {
+
+				background-color:#e4a199 !important; 
+				border-color: #e4a199 !important;
+ 
+
+			}
+
+			.col {
+
+				position: relative;
+				margin-bottom: 20px;
+
+			}
+
+			.container-card {
+
+				position:relative;
+				margin-left:150px;
+				margin-right:150px;
+
+			}
+
+			#open-form {
+
+				float: left;
+				clear: right;				
+				margin-right: 20px;
+
+			}
+
+			#delete-form {
+
+				float: left;
+
+			}
+
+			#create-new {
+
+				margin-left: 150px;
+				margin-top: 20px;
+				margin-bottom: 50px;
+
+			}
+
+			.alert {
+
+				margin-left: 150px;
+				margin-right: 150px;
 
 			}
 
@@ -69,12 +121,12 @@
 		{% endif %}
 
 		{% if image_status %}
-		<div class="alert alert-primary" role="alert">
+		<div class="alert alert-info" role="alert">
 			{{ image_status }}
 		</div>
 		{% endif %}
 		
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Create New</button>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" id="create-new">Create New</button>
 
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -86,8 +138,9 @@
 						</button>
 					</div>
 					
-					<div class="modal-body">
-						{% block form %}
+					
+					<div class="modal-body">		
+						{% block form %}				
 						<form method="post" action="/newUser" enctype="multipart/form-data">
 							<div class="form-row">
 								<div class="form-group col-md-6">
@@ -109,37 +162,39 @@
 									<label class="custom-file-label" for="image">Select image...</label>
 								</div>
 							</div>
-							<button type="submit" class="btn btn-primary" id="create-new">Create New</button>
-						</form>
-						{% endblock %}
-					</div>
-					
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>						
+
+							<button type="submit" class="btn btn-primary">Create New</button>	
+        					
+						</form>	
+						{% endblock %}					
 					</div>
 					
 				</div>
 			</div>
 		</div>
 
-		<div class="container">
-			<div class="card-deck" id="about">
+		<div class="container-card">
+			<div class="row row-cols-1 row-cols-md-4 g-4">
 				{% for users in users %}
-				<div class="card" style="width: 18rem;">
-					<img src="/static/images/{{ users.imgFile }}" class="card-img-top">
-					<div class="card-body">
+				<div class="col">
+					<div class="card h-100" style="width: 20rem;">
+						<img src="/static/images/{{ users.imgFile }}" class="card-img-top">
+						<div class="card-body">
 
-						<h5 class="card-title">{{ users.fname }} {{ users.lname }}</h5>
-						<p class="card-text">{{ users.bio }}</p>				
-							
-						<form method='POST' action='open'>
-							<button type="submit" class="btn btn-primary" id="open-btn" name="open-btn" value="{{ users.fname }}-{{ users.lname }}">Open</button>
-						</form>
-						<form method='POST' action='delete'>
-							<button type="submit" class="btn btn-primary" id="delete-btn" name="delete-btn" value="{{ users.fname }}-{{ users.lname }}">Delete</button>
-						</form>
-						
-					</div>
+							<h5 class="card-title">{{ users.fname }} {{ users.lname }}</h5>
+							<p class="card-text">{{ users.bio }}</p>				
+		
+						</div>
+						<div class="card-footer">
+
+								<form method='POST' action='open' id='open-form'>
+									<button type="submit" class="btn btn-primary" id="open-btn" name="open-btn" value="{{ users.fname }}-{{ users.lname }}">Open</button>
+								</form>
+								<form method='POST' action='delete' id='delete-form'>
+									<button type="submit" class="btn btn-primary" id="delete-btn" name="delete-btn" value="{{ users.fname }}-{{ users.lname }}">Delete</button>
+								</form>
+						</div>
+					</div>	
 				</div>
 				{% endfor %}
 			</div>
