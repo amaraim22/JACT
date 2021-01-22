@@ -1,3 +1,40 @@
+.form-popup {
+  display: none;
+  /* position: fixed; */
+  /* bottom: 0; */
+  /* right: 15px; */
+  border: 3px solid #f1f1f1;
+  /* z-index: 9; */
+  }
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+  }
+
+.grid-container > div {
+background-color: rgba(255, 255, 255, 0.8);
+border: 1px solid black;
+text-align: center;
+font-size: 30px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 80%;
+  padding: 25px;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  .container-about {
+    float: right;
+  }
+
 .jumbotron {
 			
   position:relative;
@@ -29,6 +66,14 @@
   width:100%;
   height:100%;
   opacity:0.5;
+
+}
+
+img.blur {
+
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
 
 }
 
@@ -68,3 +113,11 @@ body {
   position:relative;
 
 }
+
+#delete-btn {
+
+  background-color:gray !important; 
+  border-color: gray !important; 
+
+}
+
