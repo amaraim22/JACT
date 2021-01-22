@@ -2,20 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-<<<<<<< HEAD
 		<title>JACT</title>
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="static/style.css">
 		<link rel="stylesheet" href="static/footer-distributed-with-address-and-phones.css">
-=======
-        <title>JACT</title>
-        
-        <link rel="stylesheet" type="text/css" href="/static/style.css">
-		
->>>>>>> f25ced3a4c4f6bc356bb7dfd9cd083655a0cbb23
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<<<<<<< HEAD
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -46,6 +38,8 @@
 			#commImg {
 				float: left;
 				margin: 55px 0px 50px 75px;
+				width: 600px;
+				height: 400px;
 			}
 
 			.homeWords {
@@ -100,7 +94,7 @@
 			}
 
 			.first-section {
-				background-image: url("static/wallstreet.jpg");
+				background-image: url("static/images/wallstreet.jpg");
 				background-attachment: fixed;
 				background-position: center;
 				background-repeat: no-repeat;
@@ -199,9 +193,6 @@
 				position:relative;
 			}
 		</style>
-=======
-
->>>>>>> f25ced3a4c4f6bc356bb7dfd9cd083655a0cbb23
     </head>
 
     <body data-spy="scroll" data-target="#navbar" data-offset="150">
@@ -211,7 +202,7 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<a href="/"><img class="logo-img" src="static/logo.png" atl="logo" class="logo"></a>
+			<a href="/"><img class="logo-img" src="static/images/logo.png" atl="logo" class="logo"></a>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
@@ -240,12 +231,11 @@
 		<section>
 			<div class="homeAbout" style="height:500px;background-color:white;font-size:36px">
 				<div id="homeOne">
-					<img class="mySlides" src="static/moana.jpg">
-					<img class="mySlides" src="static/logo.png">
+					<img class="mySlides" src="static/images/home1.png">
+					<!-- <img class="mySlides" src="static/images/logo.png"> -->
 					<div class="buySlides" data-aos="fade-right">
-						<h2>Individual / Group Buy</h2>
-						<h5>Get involved in investing with your friends and family.
-							<br> Your choice.</h5>
+						<h2>Upload your portfolio</h2>
+						<h5>Get noticed by over a hundred companies <br>on JACT's database.</h5>
 					</div>
 				</div>
 			</div>
@@ -254,97 +244,19 @@
 		<section>
 			<div class="homeCom" style="height:500px;background-color:white;font-size:36px">
 				<div id="homeTwo">
-					<img id="commImg" src="static/moana.jpg">
+					<img id="commImg" src="static/images/home2.png">
 					<div class="buySlides" data-aos="fade-left">
-						<h2>Invest for free</h2>
-						<h5>We are a lightweight brokerage with minimal
-							<br>overhead, allowing us to offer you
-							<br>zero commission trading.</h5>
+						<h2>Kickback and relax</h2>
+						<h5>JACT's special algorithms will match you<br>to companies of your preference.</h5>
 					</div>
 				</div>
 			</div>
 		</section>
 
-        <!-- <div class="jumbotron jumbotron-fluid bg-dark" id="jumbotron">
-			<div class="jumbotron-background"></div>
-			<div class="container text-white">
-				<h1 class="display-4">Welcome to JACT</h1>
-				<p class="lead">A Description</p>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="appSummary">
-<<<<<<< HEAD
-				<h1>Portfolios</h1>
-				<div class="grid-container" style="height: 500px;">
-					<button class="open-button" onclick="openForm()"><div>+</div></button>
-					<button><div>2</div></button>
-					<button><div>3</div></button>
-					<button><div>4</div></button>
-					<button><div>5</div></button>
-					<button><div>6</div></button>
-					<button><div>7</div></button>
-					<button><div>8</div></button>
-				</div> -->
-		
-				<!-- <div class="form-popup" id="myForm">
-					<form action="/action_page.php" class="form-container">
-						<h1>Upload Your Portfolio!</h1>
-					
-						<label for="fname"><b>First Name</b></label>
-						<input type="text" placeholder="Enter first name" name="fname" required>
-					
-						<label for="lname"><b>Last Name</b></label>
-						<input type="text" placeholder="Enter last name" name="lname" required>
-
-						<label for="bio"><b>Bio</b></label>
-						<input type="text" placeholder="Enter last name" name="lname" required>
-						<br>
-						<label for="file"><b>File</b></label> -->
-						<!-- <p>
-							{% with messages = get_flashed_messages() %}
-							  {% if messages %}
-								<ul class=flashes>
-								{% for message in messages %}
-								  <li>{{ message }}</li>
-								{% endfor %}
-								</ul>
-							  {% endif %}
-							{% endwith %}
-						</p> -->
-						<!-- <form method="post" action="/" enctype="multipart/form-data">
-							<dl>
-								<p>
-									<input type="file" name="file" autocomplete="off" required>
-								</p>
-							</dl>
-							<p>
-								<input type="submit" value="Submit">
-							</p>
-						</form>					
-						<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-					</form>
-				</div>
-=======
-			
-				<h1>Preview</h1>
-			
->>>>>>> f25ced3a4c4f6bc356bb7dfd9cd083655a0cbb23
-			</div>
-		</div>
-		
-		<div id="footer">
-			<div class="download">
-				<h2>Contact Us!</h2>
-			</div>
-<<<<<<< HEAD
-		</div> -->
-
 		<div class="footer">
 			<footer class="footer-distributed">
 				<div class="footer-left">
-					<img src="static/logo.png" style="width: 170px;height:100px">
+					<img src="static/images/logo.png" style="width: 170px;height:100px">
 					<p class="footer-links">
 						<a href="/">Home</a>
 						·
@@ -356,7 +268,7 @@
 						.
 						<a href="#">Contact</a>
 					</p>
-					<p class="footer-company-name">iVestor &copy; 2018</p>
+					<p class="footer-company-name">JACT &copy; 2021</p>
 				</div>
 	
 				<div class="footer-center">
@@ -447,9 +359,5 @@
 				 setTimeout(carousel, 2000); // Change image every 2 seconds
 			 }
 		 </script>      
-=======
-		</div>
-        
->>>>>>> f25ced3a4c4f6bc356bb7dfd9cd083655a0cbb23
     </body>
 </html>

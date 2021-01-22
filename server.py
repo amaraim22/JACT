@@ -175,7 +175,7 @@ def open_form():
             for row in reader:
                 lines.append(row)
                 for r in range(len(lines)):
-                    if fname != lines[r]["firstName"] and lname != lines[r]["lastName"]:
+                    if fname != lines[r]["firstName"] or lname != lines[r]["lastName"]:
                         lines.remove(row)
             return render_template("user-page.html", thisUser=lines)
 
