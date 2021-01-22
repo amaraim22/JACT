@@ -2,16 +2,110 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>JACT</title>
-        
-        <link rel="stylesheet" type="text/css" href="static/style.css">
-		
+		<title>JACT</title>
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="static/style.css">
+		<link rel="stylesheet" href="static/footer-distributed-with-address-and-phones.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 		
 		<style>
+			section {
+				height: 80vh;
+			}
+
+			.footer {
+				font-family: 'raleway';
+				width: 100%;
+				margin-left: 8px;
+				margin-top: -16px;
+			}
+
+			.clearfix::after,
+			footer::after {
+				content: '';
+				display: block;
+				clear: both;    
+			}
+
+			[class^=col- ] {
+				float: left;
+			}
+
+			#commImg {
+				float: left;
+				margin: 55px 0px 50px 75px;
+			}
+
+			.homeWords {
+				padding: 0;
+				position: absolute;
+				bottom: -600px;
+				color: white;
+				text-align: center;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			.homeWords span {
+				display: block;
+				font-size: 1em;
+				font-weight: 500;
+			}
+
+			.homeWords h1 {
+				font-weight: 700;
+				font-size: 6em;
+				text-shadow: 2px 2px 4px #000000;
+			}
+
+			.homeAbout h1 {
+				font-weight: 600;
+				font-size: 1.5em;
+			}
+
+			.mySlides {
+				width: 600px;
+				height: 400px;
+				float: right;
+				margin: 25px 75px 50px 0;
+				display: none;
+			}
+
+			.buySlides {
+				padding-top: 160px;
+			}
+
+			.buySlides h2 {
+				font-size: 1.1em;
+				font-weight: 800;
+				margin-bottom: 20px;
+				text-align: center;
+			}
+
+			.buySlides h5 {
+				text-align: center;
+			}
+
+			.first-section {
+				background-image: url("static/wallstreet.jpg");
+				background-attachment: fixed;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				min-height: 800px;
+			}
+
+			body {
+				position:relative;
+				margin: 0;
+				font-family: 'Raleway', sans-serif;
+			}
+
 			.form-popup {
 				display: none;
 				/* position: fixed; */
@@ -19,33 +113,31 @@
 				/* right: 15px; */
 				border: 3px solid #f1f1f1;
 				/* z-index: 9; */
-				}
+			}
+
 			.grid-container {
 				display: grid;
 				grid-template-columns: auto auto auto auto;
 				grid-gap: 10px;
 				background-color: #2196F3;
 				padding: 10px;
-				}
+			}
 
 			.grid-container > div {
-			background-color: rgba(255, 255, 255, 0.8);
-			border: 1px solid black;
-			text-align: center;
-			font-size: 30px;
+				background-color: rgba(255, 255, 255, 0.8);
+				border: 1px solid black;
+				text-align: center;
+				font-size: 30px;
 			}
 
 			.jumbotron {
-			
 				position:relative;
 				overflow:hidden;
 				text-align:center;
 				margin-top:50px;
-
 			}
 
 			.jumbotron .container {
-			
 				position:relative;
 				z-index:2;
   
@@ -53,11 +145,9 @@
 				padding:2rem;
 				border:1px solid rgba(0,0,0,0.1);
 				border-radius:3px;
-				
 			}
 
 			.jumbotron-background {
-			
 				object-fit:cover;
 				font-family: 'object-fit: cover;';
 				position:absolute;
@@ -66,65 +156,51 @@
 				width:100%;
 				height:100%;
 				opacity:0.5;
-  
 			}
 
 			img.blur {
-
 				-webkit-filter: blur(4px);
 				filter: blur(4px);
 				filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
-
 			}
 			
 			.appSummary {
-			
 				text-align:center;
 				margin-top:50px;
 				margin-bottom:50px;
-			
 			}
 
 			.download {
-			
-			text-align:center;
-			margin-top:50px;
-			margin-bottom:50px;
-		
-		}
+				text-align:center;
+				margin-top:50px;
+				margin-bottom:50px;
+			}
 			
 			.home {
-			
 				margin:0 auto;
-			
 			}
 			
 			#footer {
-			
 				background-color:#efd1c6;
 				padding-top:150px;
 				margin-top:50px;
 				padding-bottom:150px;
-			
 			}
 			
 			body {
-			
 				position:relative;
-			
 			}
-		
 		</style>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </head>
 
     <body data-spy="scroll" data-target="#navbar" data-offset="150">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
-			<a class="navbar-brand" href="/">JACT</a>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+
+			<a href="/"><img class="logo-img" src="static/logo.png" atl="logo" class="logo"></a>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
@@ -132,35 +208,63 @@
 						<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/about">About Us</a>
+						<a class="nav-link" href="/about">About</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/portfolio">Portfolio</a>
 					</li>
 				</ul>
-
 			</div>
-        </nav>
-        
-        <div class="jumbotron jumbotron-fluid bg-dark" id="jumbotron">
-  
-			<div class="jumbotron-background">
-				
+		</nav>
+		
+		<!-- wallpaper -->
+		<div class = "first-section"></div>
+		<div class="homeWords">
+			<h1>J A C T</h1>
+			<h2><span>CONNECTING YOU TO EMPLOYERS AROUND THE WORLD</span></h2>
+		</div>
+
+		<br><br>
+
+		<section>
+			<div class="homeAbout" style="height:500px;background-color:white;font-size:36px">
+				<div id="homeOne">
+					<img class="mySlides" src="static/moana.jpg">
+					<img class="mySlides" src="static/logo.png">
+					<div class="buySlides" data-aos="fade-right">
+						<h2>Individual / Group Buy</h2>
+						<h5>Get involved in investing with your friends and family.
+							<br> Your choice.</h5>
+					</div>
+				</div>
 			</div>
+		</section>
+	
+		<section>
+			<div class="homeCom" style="height:500px;background-color:white;font-size:36px">
+				<div id="homeTwo">
+					<img id="commImg" src="static/moana.jpg">
+					<div class="buySlides" data-aos="fade-left">
+						<h2>Invest for free</h2>
+						<h5>We are a lightweight brokerage with minimal
+							<br>overhead, allowing us to offer you
+							<br>zero commission trading.</h5>
+					</div>
+				</div>
+			</div>
+		</section>
 
-			<div class="container text-white ">
-
+        <!-- <div class="jumbotron jumbotron-fluid bg-dark" id="jumbotron">
+			<div class="jumbotron-background"></div>
+			<div class="container text-white">
 				<h1 class="display-4">Welcome to JACT</h1>
 				<p class="lead">A Description</p>
-
 			</div>
 		</div>
 
 		<div class="container">
-		
 			<div class="appSummary">
-			
-				<h1>Portfolios for yall</h1>
+				<h1>Portfolios</h1>
 				<div class="grid-container" style="height: 500px;">
 					<button class="open-button" onclick="openForm()"><div>+</div></button>
 					<button><div>2</div></button>
@@ -170,10 +274,9 @@
 					<button><div>6</div></button>
 					<button><div>7</div></button>
 					<button><div>8</div></button>
-
-				  </div>
+				</div> -->
 		
-				<div class="form-popup" id="myForm">
+				<!-- <div class="form-popup" id="myForm">
 					<form action="/action_page.php" class="form-container">
 						<h1>Upload Your Portfolio!</h1>
 					
@@ -186,7 +289,7 @@
 						<label for="bio"><b>Bio</b></label>
 						<input type="text" placeholder="Enter last name" name="lname" required>
 						<br>
-						<label for="file"><b>File</b></label>
+						<label for="file"><b>File</b></label> -->
 						<!-- <p>
 							{% with messages = get_flashed_messages() %}
 							  {% if messages %}
@@ -198,7 +301,7 @@
 							  {% endif %}
 							{% endwith %}
 						</p> -->
-						<form method="post" action="/" enctype="multipart/form-data">
+						<!-- <form method="post" action="/" enctype="multipart/form-data">
 							<dl>
 								<p>
 									<input type="file" name="file" autocomplete="off" required>
@@ -208,26 +311,79 @@
 								<input type="submit" value="Submit">
 							</p>
 						</form>					
-						<!-- <button type="submit" class="btn">Submit</button> -->
 						<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
 					</form>
-					</div>
-				<h1>Preview</h1>
-			
+				</div>
 			</div>
-		
 		</div>
-		
 		
 		<div id="footer">
 			<div class="download">
-
 				<h2>Contact Us!</h2>
-				
 			</div>
-		</div>
+		</div> -->
 
-        <div id="user_list">
+		<div class="footer">
+			<footer class="footer-distributed">
+				<div class="footer-left">
+					<img src="static/logo.png" style="width: 170px;height:100px">
+					<p class="footer-links">
+						<a href="/">Home</a>
+						·
+						<a href="/about">about</a>
+						·
+						<a href="/portfolio">Portfolio</a>
+						·
+						<a href="#">FAQ</a>
+						.
+						<a href="#">Contact</a>
+					</p>
+					<p class="footer-company-name">iVestor &copy; 2018</p>
+				</div>
+	
+				<div class="footer-center">
+					<div>
+						<i class="fa fa-map-marker"></i>
+						<p>
+							<span>100 Nicolls Rd, Stony Brook, NY 11794</span>United States</p>
+					</div>
+					<div>
+						<i class="fa fa-phone"></i>
+						<p>+1 (571) 252 9191</p>
+					</div>
+					<div>
+						<i class="fa fa-envelope"></i>
+						<p>
+							<a href="mailto:support@company.com">info@jact.com</a>
+						</p>
+					</div>
+				</div>
+	
+				<div class="footer-right">
+					<p class="footer-company-about">
+						<span>About JACT</span>
+						Connecting you to employers around the world.
+					</p>
+					<div class="footer-icons">
+						<a href="#">
+							<i class="fa fa-facebook"></i>
+						</a>
+						<a href="#">
+							<i class="fa fa-twitter"></i>
+						</a>
+						<a href="#">
+							<i class="fa fa-linkedin"></i>
+						</a>
+						<a href="#">
+							<i class="fa fa-github"></i>
+						</a>
+					</div>
+				</div>
+			</footer>
+		</div>
+		
+		
+		<div id="user_list">
         {% for user in users %}
             <h2>
               {{ user.fname }}{{ user.lname }}
@@ -250,12 +406,28 @@
 			function closeForm() {
 				document.getElementById("myForm").style.display = "none";
 			}
-		 </script>
-
-		
-			$(function () { objectFitImages() });
-		
-        </script>
-        
+		 </script>  
+		 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+		 <script>
+			 AOS.init({
+				 duration: 1000,
+				 offset: 400,
+			 });
+	 
+			 var myIndex = 0;
+			 carousel();
+	 
+			 function carousel() {
+				 var i;
+				 var x = document.getElementsByClassName("mySlides");
+				 for (i = 0; i < x.length; i++) {
+					 x[i].style.display = "none";
+				 }
+				 myIndex++;
+				 if (myIndex > x.length) { myIndex = 1 }
+				 x[myIndex - 1].style.display = "block";
+				 setTimeout(carousel, 2000); // Change image every 2 seconds
+			 }
+		 </script>      
     </body>
 </html>
